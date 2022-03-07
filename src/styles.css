@@ -1,0 +1,214 @@
+@import "@contentful/forma-36-tokens/dist/css/index.css";
+
+:root {
+  --color-accordion-bg: var(--color-element-light);
+  --color-accordion-content-bg: white;
+  --color-accordion-border: var(--color-element-mid);
+  --spacing-accordion-indent: 3em;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  font-family: "Avenir Next W01", Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: gray;
+}
+
+.App > div {
+  margin-top: 1em;
+}
+
+/* MODAL */
+
+.modal {
+  max-height: 600px;
+  height: 600px;
+  width: 800px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal.prompt {
+  height: 200px;
+  width: 600px;
+}
+
+.modal > .header {
+  padding: 2em 1em;
+  background-color: whitesmoke;
+  border: 1px solid var(--color-element-mid);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: 600;
+}
+
+.modal > .content {
+  flex-grow: 1;
+  align-self: stretch;
+  overflow-y: auto;
+}
+
+.modal.prompt > .content {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal > .footer {
+  display: flex;
+  justify-content: end;
+  padding: 0.5em;
+  border-top: 1px solid var(--color-element-mid);
+  background-color: whitesmoke;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.modal .footer button {
+  margin-left: var(--spacing-xs);
+}
+
+/* ACCORDION OVERRIDES */
+
+.modal .content .accordion:first-of-type li {
+  border-top: none;
+}
+
+/* f36 accordion content wrapper */
+.accordion li > div {
+  background: var(--color-accordion-bg);
+}
+
+/* f36 accordion content wrapper when opened */
+.accordion li > div.undefined > div {
+  border-top: 1px solid var(--color-accordion-border);
+}
+
+.accordion li > div.undefined div:empty {
+  border-top: none;
+}
+
+/* f36 accordion content*/
+.accordion li > div > div {
+  padding: 0;
+}
+
+/* accordion inside of accordion */
+.accordion .accordion {
+  margin-left: var(--spacing-accordion-indent);
+}
+
+/* f36 first and last accordion item of inner accordion should be borderless */
+.accordion .accordion > li:first-child {
+  border-top: none !important;
+}
+.accordion .accordion > li:last-child {
+  border-bottom: none !important;
+}
+
+/* f36 acordion inside of accordion header */
+.accordion .accordion > li > h2 {
+  border-left: 1px solid var(--color-accordion-border);
+  background: var(--color-accordion-content-bg);
+}
+
+/* accordion content */
+.accordion .messages {
+  padding: 0.5em;
+  margin-left: var(--spacing-accordion-indent);
+  background: var(--color-accordion-content-bg);
+  border-left: 1px solid var(--color-accordion-border);
+}
+
+.accordion .messages .expand {
+  margin-top: var(--spacing-xs);
+}
+
+.accordion .title {
+  flex-grow: 1;
+}
+
+.accordion .title > .content {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.accordion .title > .content .icon {
+  margin-right: var(--spacing-xs);
+}
+
+.accordion .title > .content .separator {
+  margin-left: var(--spacing-xs);
+  margin-right: var(--spacing-xs);
+}
+
+.accordion .title > .content .flag {
+  margin-left: var(--spacing-s);
+}
+
+.accordion .title > .content > .link {
+  margin-left: auto;
+  margin-right: var(--spacing-xs);
+  display: flex;
+}
+
+.accordion .title > .status {
+  margin-right: var(--spacing-s);
+}
+
+/* MESSAGE */
+
+.message {
+  margin-top: 0.3em;
+}
+
+.message:first-child {
+  margin-top: 0;
+}
+
+.message.success p {
+  color: var(--color-positive);
+  margin-left: var(--spacing-2xs);
+  font-weight: 500;
+}
+
+.message.failure p {
+  color: var(--color-negative);
+  margin-left: var(--spacing-2xs);
+  font-weight: 500;
+}
+
+.message.warning p {
+  color: var(--color-warning);
+  margin-left: var(--spacing-2xs);
+  font-weight: 500;
+}
+
+.message.success li p,
+.message.warning li p,
+.message.failure li p {
+  color: var(--color-text-mid);
+  margin-left: 0;
+  font-weight: normal;
+}
+
+.message .icon {
+  margin: 1px;
+}
+
+.message ul {
+  padding-left: 2.3em;
+}
